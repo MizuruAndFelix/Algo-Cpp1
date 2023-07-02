@@ -26,7 +26,7 @@ void printArr(int arr[], int size) {
 //	printArr(arr, size);
 //}
 
-//void search(int arr[], int target, int size) {
+//int NumSet(int arr[], int target, int size) {
 //	int result = 0;
 //	int left = 0;
 //	int right = size;
@@ -42,18 +42,49 @@ void printArr(int arr[], int size) {
 //		else if (arr[middle] < target) {
 //			result = right;
 //		}
+//		return result;
 //	}
-//}
+
 
 int search(int arr[], int target, int size) {
 	int couter = 0;
-	for (int i = 0; i < size; i++) {
-		if (arr[i] > target) {
-			couter++;
-		}
+	int NumTarget = 0;
+	int left = 0;
+	int right = size;
+	int middle = (left + right) / 2;
+
+	if (arr[middle] == target) {
+		NumTarget = middle;// мид
 	}
-	return couter;
-}
+	else if (arr[left] <= target) {
+		NumTarget = left;
+	}
+	else if (arr[right] >= target) {
+		NumTarget = right;
+	}
+
+	//                                left { 14, 16, 19, 32, 32, 32, 56, 69, 72 } right num = 17
+	//if (arr[NumTarget] != target) { // NumT = 0
+	//	if (NumTarget == left) {  // 0 = 0  t
+	//		while (arr[NumTarget] < target ) { // 14 < 17 t |
+	//			NumTarget++; // 0+1 = 1 | 16 < 17
+	//		}
+	//	}
+	//	if (NumTarget == middle) {
+	//		while (arr[NumTarget] != target) {
+	//			NumTarget++;
+	//		}
+	//	}
+	//}
+
+		for (int i = NumTarget; i < size; i++) {
+			if (arr[i] > target) {
+				couter++;
+			}
+		}
+		return couter;
+	}
+
 
 int main()
 {
